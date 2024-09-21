@@ -1,10 +1,8 @@
 //package sc.senai.pizzaria.security.utils;
-//
 //import org.springframework.security.core.GrantedAuthority;
 //import org.springframework.security.core.authority.SimpleGrantedAuthority;
 //import org.springframework.security.oauth2.jwt.Jwt;
 //import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationConverter;
-//import org.springframework.security.oauth2.server.resource.authentication.JwtGrantedAuthoritiesConverter;
 //
 //import java.util.Collection;
 //import java.util.List;
@@ -12,21 +10,14 @@
 //
 //public class CustomJwtAuthenticationConverter extends JwtAuthenticationConverter {
 //
-//    private final JwtGrantedAuthoritiesConverter defaultGrantedAuthoritiesConverter = new JwtGrantedAuthoritiesConverter();
-//
+//    @Override
 //    protected Collection<GrantedAuthority> extractAuthorities(Jwt jwt) {
-//        // Converter as autoridades padrão usando o JwtGrantedAuthoritiesConverter
-//        Collection<GrantedAuthority> authorities = defaultGrantedAuthoritiesConverter.convert(jwt);
+//        // Pegar as authorities do claim "authorities"
+//        List<String> authorities = jwt.getClaimAsStringList("authorities");
 //
-//        // Adicionar autoridades customizadas baseadas no claim "authorities"
-//        List<String> customAuthorities = jwt.getClaimAsStringList("authorities");
-//        if (customAuthorities != null) {
-//            List<GrantedAuthority> customGrantedAuthorities = customAuthorities.stream()
-//                    .map(SimpleGrantedAuthority::new)
-//                    .collect(Collectors.toList());
-//            authorities.addAll(customGrantedAuthorities);
-//        }
-//
-//        return authorities;
+//        // Converter para SimpleGrantedAuthority para Spring Security
+//        return authorities.stream()
+//                .map(SimpleGrantedAuthority::new)
+//                .collect(Collectors.toList());
 //    }
 //}

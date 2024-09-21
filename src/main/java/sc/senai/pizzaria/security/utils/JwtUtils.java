@@ -23,7 +23,10 @@ public class JwtUtils {
     public LoginResponse generateJwtToken(Usuario usuario) {
         Instant now = Instant.now();
         long expiresIn = 60L * 30L; //30 minutos
-        String[] scopes = usuario.getAuthorities().stream().map(GrantedAuthority::getAuthority).toArray(String[]::new);
+        List<String > scopes = usuario.getAuthorities().stream().map(GrantedAuthority::getAuthority).toList();
+        for (String scope : scopes) {
+            System.out.println(scope);
+        }
 
         JwtClaimsSet jwt = JwtClaimsSet.builder()
                 .issuer("pizzaria")
