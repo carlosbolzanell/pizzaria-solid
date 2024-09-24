@@ -17,7 +17,7 @@ import sc.senai.pizzaria.enuns.Tipo;
 public class Pizza extends Produto {
 
     @Column(nullable = false)
-    
+    @Enumerated(EnumType.STRING)
     private Tipo tipo;
 
     @Column(nullable = false)
@@ -27,6 +27,7 @@ public class Pizza extends Produto {
     public Pizza (PizzaRequestDTO dto){
         super(dto);
         this.tipo = dto.tipo();
+        this.tamanho = dto.tamanho();
     }
 
 }

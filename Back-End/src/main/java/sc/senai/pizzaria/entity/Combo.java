@@ -11,19 +11,17 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class Carrinho {
+public class Combo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne(mappedBy = "carrinho")
-    private Cliente cliente;
+    private String nome;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "carrinho_id")
-    private List<ProdutoQuantidade> produtos;
+    private Double preco;
 
-    @Column(nullable = false)
-    private Double valorTotal = 0.0;
+    private String descricao;
 
+    @ManyToMany
+    private List<Produto> produtos;
 }

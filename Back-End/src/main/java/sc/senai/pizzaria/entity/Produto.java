@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import sc.senai.pizzaria.controller.dto.bebida.BebidaRequestDTO;
 import sc.senai.pizzaria.controller.dto.pizza.PizzaRequestDTO;
 
 @Entity
@@ -11,7 +12,7 @@ import sc.senai.pizzaria.controller.dto.pizza.PizzaRequestDTO;
 @NoArgsConstructor
 @Data
 @Inheritance(strategy = InheritanceType.JOINED)
-public abstract class Produto {
+public class Produto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -27,6 +28,16 @@ public abstract class Produto {
     private Double preco;
 
     public Produto (PizzaRequestDTO dto){
+        this.nome = dto.nome();
+        this.descricao = dto.descricao();
+        this.preco = dto.preco();
+    }
+
+    public Produto (Long id){
+        this.id = id;
+    }
+
+    public Produto (BebidaRequestDTO dto){
         this.nome = dto.nome();
         this.descricao = dto.descricao();
         this.preco = dto.preco();

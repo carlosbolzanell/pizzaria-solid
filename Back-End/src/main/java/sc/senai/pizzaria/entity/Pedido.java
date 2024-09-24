@@ -25,7 +25,7 @@ public class Pedido {
 
     @OneToMany
     @JoinColumn(name = "id_pedido")
-    private List<Pizza> pizzas;
+    private List<ProdutoQuantidade> pizzas;
 
     @ManyToOne
     private Cliente cliente;
