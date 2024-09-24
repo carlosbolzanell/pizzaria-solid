@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import sc.senai.pizzaria.controller.dto.pizza.PizzaRequestDTO;
+import sc.senai.pizzaria.enuns.Tamanho;
 import sc.senai.pizzaria.enuns.Tipo;
 
 @EqualsAndHashCode(callSuper = true)
@@ -16,7 +17,12 @@ import sc.senai.pizzaria.enuns.Tipo;
 public class Pizza extends Produto {
 
     @Column(nullable = false)
+    
     private Tipo tipo;
+
+    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
+    private Tamanho tamanho;
 
     public Pizza (PizzaRequestDTO dto){
         super(dto);
