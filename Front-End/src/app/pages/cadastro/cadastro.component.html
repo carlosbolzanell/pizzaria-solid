@@ -1,8 +1,22 @@
 <main class="flex flex-col items-center w-full">
     <h1 class="font-semibold font-kalam text-lg mt-5">Cadastro de Pizza</h1>
-    <form action="">
+    <form>
         <app-input 
-
+            label="Nome" 
+            placeholder="Digite o nome da pizza"
+            name="nome"
         ></app-input>
+        <app-input 
+            label="Descrição" 
+            placeholder="Digite a descrição da pizza"
+            name="descricao"
+        ></app-input>
+        <app-input 
+            label="Preço"
+            type="number" 
+            placeholder="Digite o preço da pizza"
+            name="preco"
+        ></app-input>
+        <button>Enivar</button>
     </form>
 </main>

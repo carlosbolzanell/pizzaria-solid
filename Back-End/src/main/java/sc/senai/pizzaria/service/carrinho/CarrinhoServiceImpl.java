@@ -7,6 +7,7 @@ import sc.senai.pizzaria.entity.Carrinho;
 import sc.senai.pizzaria.entity.Produto;
 import sc.senai.pizzaria.entity.ProdutoQuantidade;
 import sc.senai.pizzaria.repository.CarrinhoRepository;
+import sc.senai.pizzaria.service.produtoQuantidade.ProdutoQuantidadeServiceImpl;
 
 import java.util.NoSuchElementException;
 
@@ -15,6 +16,7 @@ import java.util.NoSuchElementException;
 public class CarrinhoServiceImpl implements CarrinhoService {
 
     private final CarrinhoRepository repository;
+    private final ProdutoQuantidadeServiceImpl produtoQuantidadeService;
 
     @Override
     public void adicionarProduto(Long idProduto, Integer quantidade, JwtAuthenticationToken token) {
@@ -28,6 +30,16 @@ public class CarrinhoServiceImpl implements CarrinhoService {
     @Override
     public void removerProduto(Long idQuantidadeProduto, JwtAuthenticationToken token) {
 
+    }
+
+    @Override
+    public void adicionarQuantidade(Long idProduto, JwtAuthenticationToken token) {
+        produtoQuantidadeService.adicionar(idProduto);
+    }
+
+    @Override
+    public void removerQuantidade(Long idProduto, JwtAuthenticationToken token){
+        produtoQuantidadeService.remover(idProduto);
     }
 
     public Carrinho buscarCarrinhoPorCliente(String username){

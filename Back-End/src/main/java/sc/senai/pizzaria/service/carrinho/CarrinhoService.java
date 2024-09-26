@@ -8,4 +8,6 @@ public interface CarrinhoService {
     void adicionarProduto(Long idProduto, Integer quantidade, JwtAuthenticationToken token);
     void removerProduto(Long idQuantidadeProduto, JwtAuthenticationToken token);
 
+    void adicionarQuantidade(Long idProduto, JwtAuthenticationToken token);
+    void removerQuantidade(Long idProduto, JwtAuthenticationToken token);
 }

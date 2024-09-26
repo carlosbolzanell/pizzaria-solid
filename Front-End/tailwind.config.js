@@ -8,6 +8,7 @@ module.exports = {
       fontFamily: {
         'kanit': ['Kanit', 'sans-serif'],
         'kalam': ['Kalam', 'cursive'],
+        'poppins': ["Poppins"]
       },
       colors:{
         "primary": "#31572C",

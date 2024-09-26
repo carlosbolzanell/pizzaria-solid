@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import sc.senai.pizzaria.controller.dto.pizza.PizzaRequestDTO;
 import sc.senai.pizzaria.service.produto.pizza.PizzaService;
 import sc.senai.pizzaria.service.produto.pizza.PizzaServiceImpl;
@@ -19,13 +20,13 @@ public class PizzaController {
 
     private final PizzaServiceImpl service;
 
-    @PostMapping
-    public ResponseEntity<?> criarPizza(@RequestBody PizzaRequestDTO dto){
-        service.criarPizza(dto);
+    @PostMapping(consumes = {"multipart/form-data"})
+    public ResponseEntity<?> criarPizza(@RequestPart PizzaRequestDTO dto,
+                                        @RequestPart MultipartFile imagem){
+        service.criarPizza(dto, imagem);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-    @PreAuthorize("hasAuthority('BASIC')")
     @GetMapping
     public ResponseEntity<?> listarPizzas(@PageableDefault Pageable pageable){
         return new ResponseEntity<>(service.listarPizzas(pageable), HttpStatus.OK);

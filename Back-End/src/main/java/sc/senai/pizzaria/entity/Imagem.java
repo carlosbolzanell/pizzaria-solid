@@ -14,10 +14,12 @@ public class Imagem {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false)
+    private String referencia;
+
     private String nome;
 
     @Column(columnDefinition = "TEXT")
     private String caminho;
-    @Column(nullable = false)
-    private String referencia;
+
 }

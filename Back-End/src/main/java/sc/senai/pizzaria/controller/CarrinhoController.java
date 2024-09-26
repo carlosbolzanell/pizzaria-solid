@@ -21,4 +21,16 @@ public class CarrinhoController {
         service.adicionarProduto(idProduto, quantidade, token);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+    @PutMapping("/adicionarQuantidade")
+    public ResponseEntity<?> adicionarQuantidade(@RequestParam Long idProduto, JwtAuthenticationToken token){
+        service.adicionarQuantidade(idProduto, token);
+        return new ResponseEntity<>( HttpStatus.OK);
+    }
+
+    @PutMapping("/removerQuantidade")
+    public ResponseEntity<?> removerQuantidade(@RequestParam Long idProduto, JwtAuthenticationToken token){
+        service.removerQuantidade(idProduto, token);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 }

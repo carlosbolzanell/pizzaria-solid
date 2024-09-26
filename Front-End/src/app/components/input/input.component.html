@@ -1,7 +1,8 @@
-<div>
+<div class="font-poppins">
     <label for="">{{label}}</label>
-    <input 
-        {{...props}}
-        class="border border-gray-300 rounded-md p-2 w-full"
+    <input
+        [placeholder]="placeholder"
+        [type]="type"
+        class="border border-gray-300 rounded-md p-2 w-full outline-none"
     />
 </div>

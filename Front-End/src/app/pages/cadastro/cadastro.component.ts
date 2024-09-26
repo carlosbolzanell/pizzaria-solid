@@ -10,4 +10,9 @@ import { InputComponent } from '../../components/input/input.component';
 })
 export class CadastroComponent {
 
+  enviarFormulario(e: FormData) {
+    console.log(e.get('nome'));
+    console.log('Formulário enviado');
+  }
+
 }

@@ -25,7 +25,6 @@ public class UsuarioController {
     @PreAuthorize("isAuthenticated()")
     @GetMapping
     public ResponseEntity<?> usuarioAutenticado(JwtAuthenticationToken token){
-        System.out.println(token.getAuthorities());
         return ResponseEntity.ok(usuarioService.buscarUsuario(token.getName()));
     }
 }

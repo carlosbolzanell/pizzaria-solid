@@ -8,7 +8,9 @@ import { Component, Input } from '@angular/core';
   styleUrl: './input.component.scss'
 })
 export class InputComponent {
-  @Input() props? : HTMLInputElement;
+  @Input() placeholder? : string = "";
+  @Input() type: string = "text";
   @Input() label: string = "";
+  @Input() name: string = "";
 
 }

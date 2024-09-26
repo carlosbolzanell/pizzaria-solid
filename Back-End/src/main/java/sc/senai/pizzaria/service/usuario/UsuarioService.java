@@ -3,6 +3,7 @@ package sc.senai.pizzaria.service.usuario;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import sc.senai.pizzaria.controller.dto.usuario.UsuarioRequestDTO;
+import sc.senai.pizzaria.controller.dto.usuario.UsuarioResponseDTO;
 import sc.senai.pizzaria.entity.Cliente;
 import sc.senai.pizzaria.repository.ClienteRepository;
 
@@ -18,8 +19,8 @@ public class UsuarioService {
         return repository.save(cliente);
     }
 
-    public Cliente buscarUsuario(String name) {
-        return repository.findByUsername(name).orElseThrow(()->
-                new NoSuchElementException("Usuário não encontrado"));
+    public UsuarioResponseDTO buscarUsuario(String name) {
+        Cliente cliente = repository.findByUsername(name).orElseThrow(NoSuchElementException::new);
+        return new UsuarioResponseDTO(cliente);
     }
 }
