@@ -33,4 +33,16 @@ public class CarrinhoController {
         service.removerQuantidade(idProduto, token);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+    @DeleteMapping("/remover")
+    public ResponseEntity<?> removerProduto(@RequestParam Long idQuantidadeProduto, JwtAuthenticationToken token){
+        service.removerProduto(idQuantidadeProduto, token);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @DeleteMapping("/limpar")
+    public ResponseEntity<?> limparCarrinho(JwtAuthenticationToken token){
+        service.limparCarrinho(token);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 }

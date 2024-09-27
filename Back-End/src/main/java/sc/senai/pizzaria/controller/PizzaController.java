@@ -9,6 +9,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import sc.senai.pizzaria.controller.dto.pizza.PizzaRequestDTO;
+import sc.senai.pizzaria.enuns.Tamanho;
 import sc.senai.pizzaria.service.produto.pizza.PizzaService;
 import sc.senai.pizzaria.service.produto.pizza.PizzaServiceImpl;
 
@@ -28,8 +29,8 @@ public class PizzaController {
     }
 
     @GetMapping
-    public ResponseEntity<?> listarPizzas(@PageableDefault Pageable pageable){
-        return new ResponseEntity<>(service.listarPizzas(pageable), HttpStatus.OK);
+    public ResponseEntity<?> listarPizzas(@PageableDefault Pageable pageable, @RequestParam Tamanho tamanho){
+        return new ResponseEntity<>(service.listarPizzas(tamanho, pageable), HttpStatus.OK);
     }
 
 }

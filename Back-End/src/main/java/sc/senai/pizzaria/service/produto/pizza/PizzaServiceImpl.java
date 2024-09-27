@@ -9,6 +9,7 @@ import sc.senai.pizzaria.controller.dto.pizza.PizzaRequestDTO;
 import sc.senai.pizzaria.controller.dto.pizza.PizzaResponseDTO;
 import sc.senai.pizzaria.entity.Imagem;
 import sc.senai.pizzaria.entity.Pizza;
+import sc.senai.pizzaria.enuns.Tamanho;
 import sc.senai.pizzaria.repository.PizzaRepository;
 import sc.senai.pizzaria.service.imagem.ImagemServiceImpl;
 
@@ -28,7 +29,7 @@ public class PizzaServiceImpl implements PizzaService{
     }
 
     @Override
-    public Page<PizzaResponseDTO> listarPizzas(Pageable pageable) {
-        return repository.findAll(pageable).map(PizzaResponseDTO::new);
+    public Page<PizzaResponseDTO> listarPizzas(Tamanho tamanho, Pageable pageable) {
+        return repository.findAllByTamanho(tamanho, pageable).map(PizzaResponseDTO::new);
     }
 }
